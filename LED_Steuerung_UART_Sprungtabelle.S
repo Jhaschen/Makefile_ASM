@@ -20,7 +20,7 @@
 
 
 .equ minimum = 1   ; Minimum und Maximum der Sprungtabelle
-.equ maximum = 2
+.equ maximum = 8
 
 
 
@@ -105,6 +105,16 @@ loop:                                                     ; Endlosschleife
 Sprungtabelle:
         rjmp rx_0
         rjmp rx_1
+				rjmp rx_2
+				rjmp rx_3
+				rjmp rx_4
+				rjmp rx_5
+				rjmp rx_6
+				rjmp rx_7
+
+
+
+
 
 
 vergleiche:
@@ -139,6 +149,87 @@ rx_1:
    	cbi  PORTC, 0x1    ; Lösche Bit 0 in Port
    	rjmp loop
 
+		rx_1:
+		        sbic  PORTC,0x1    ; Überspringe den nächsten Befehl, wenn das Bit 1 im Port gelöscht ist
+		  	    rjmp  ClrBit1   ; Springe zu ClrBitNow
+		  	    sbi   PORTC,0x1    ; Setze Bit 0 in PortC
+		  	    rjmp  loop   ; Springe BitReady                 ; Sprung zur Marke loop
+		  	ClrBit1:
+		   	cbi  PORTC, 0x1    ; Lösche Bit 0 in Port
+		   	rjmp loop
+
+ 	rx_2:
+				        sbic  PORTC,0x2    ; Überspringe den nächsten Befehl, wenn das Bit 2 im Port gelöscht ist
+				  	    rjmp  ClrBit1   ; Springe zu ClrBitNow
+				  	    sbi   PORTC,0x2    ; Setze Bit 0 in PortC
+				  	    rjmp  loop   ; Springe BitReady                 ; Sprung zur Marke loop
+				  	ClrBit1:
+				   	cbi  PORTC, 0x2    ; Lösche Bit 2 in Port
+				   	rjmp loop
+
+
+
+						rx_2:
+
+						        sbic  PORTC,0x2    ; Überspringe den nächsten Befehl, wenn das Bit 0 im Port gelöscht ist
+						  	rjmp  ClrBit2   ; Springe zu ClrBitNow
+						  	sbi   PORTC,0x2    ; Setze Bit 0 in PortC
+						  	rjmp  loop   ; Springe BitReady                 ; Sprung zur Marke loop
+						  	ClrBit2:
+						   	cbi  PORTC, 0x2    ; Lösche Bit 0 in Port
+						   	rjmp loop
+
+						rx_3:
+
+						        sbic  PORTC,0x3    ; Überspringe den nächsten Befehl, wenn das Bit 0 im Port gelöscht ist
+						  	rjmp  ClrBit3   ; Springe zu ClrBitNow
+						  	sbi   PORTC,0x3    ; Setze Bit 0 in PortC
+						  	rjmp  loop   ; Springe BitReady                 ; Sprung zur Marke loop
+						  	ClrBit3:
+						   	cbi  PORTC, 0x3    ; Lösche Bit 0 in Port
+						   	rjmp loop
+
+						rx_4:
+
+						        sbic  PORTC,0x4    ; Überspringe den nächsten Befehl, wenn das Bit 0 im Port gelöscht ist
+						  	rjmp  ClrBit4   ; Springe zu ClrBitNow
+						  	sbi   PORTC,0x4    ; Setze Bit 0 in PortC
+						  	rjmp  loop   ; Springe BitReady                 ; Sprung zur Marke loop
+						  	ClrBit4:
+						   	cbi  PORTC, 0x4    ; Lösche Bit 0 in Port
+						   	rjmp loop
+
+						rx_5:
+
+						        sbic  PORTC,0x5    ; Überspringe den nächsten Befehl, wenn das Bit 0 im Port gelöscht ist
+						  	rjmp  ClrBit5   ; Springe zu ClrBitNow
+						  	sbi   PORTC,0x5    ; Setze Bit 0 in PortC
+						  	rjmp  loop   ; Springe BitReady                 ; Sprung zur Marke loop
+						  	ClrBit5:
+						   	cbi  PORTC, 0x5    ; Lösche Bit 0 in Port
+						   	rjmp loop
+
+
+						rx_6:
+
+						        sbic  PORTC,0x6    ; Überspringe den nächsten Befehl, wenn das Bit 0 im Port gelöscht ist
+						  	rjmp  ClrBit6   ; Springe zu ClrBitNow
+						  	sbi   PORTC,0x6    ; Setze Bit 0 in PortC
+						  	rjmp  loop   ; Springe BitReady                 ; Sprung zur Marke loop
+						  	ClrBit6:
+						   	cbi  PORTC, 0x6    ; Lösche Bit 0 in Port
+						   	rjmp loop
+
+
+						rx_7:
+
+						    sbic  PORTC,0x7    ; Überspringe den nächsten Befehl, wenn das Bit 0 im Port gelöscht ist
+						  	rjmp  ClrBit7   ; Springe zu ClrBitNow
+						  	sbi   PORTC,0x7    ; Setze Bit 0 in PortC
+						  	rjmp  loop   ; Springe BitReady                 ; Sprung zur Marke loop
+						  	ClrBit7:
+						   	cbi  PORTC, 0x7    ; Lösche Bit 0 in Port
+						   	rjmp loop
 
 
 Fehler:
